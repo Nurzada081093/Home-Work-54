@@ -56,12 +56,11 @@ const App = () => {
             if (item.clicked && item.hasItem) {
                 setTimeout(() => {
                     setGameOver(true);
-                    alert('Поздравляю! Вы успешно нашли предмет. Если хотите продолжить игру, то нажмите на кнопку "Rest".');
+                    alert('Поздравляю! Вы успешно нашли предмет. Если хотите продолжить игру, то нажмите на кнопку "Reset".');
                 }, 50);
             }
         });
     };
-
 
     return (
         <div className="container">
