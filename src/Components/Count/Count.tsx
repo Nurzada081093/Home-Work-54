@@ -1,4 +1,5 @@
 import React from 'react';
+import './Count.css';
 
 interface ICount {
     counter: number;
@@ -6,7 +7,7 @@ interface ICount {
 
 const Count: React.FC<ICount> = ({counter}) => {
     return (
-        <div>Tries: {counter}</div>
+        <div className="tries">Tries: {counter}</div>
     );
 };
 

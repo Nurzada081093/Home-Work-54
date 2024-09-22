@@ -1,6 +1,26 @@
+body {
+    background:url("https://grizly.club/sec2/uploads/posts/2024-02/grizly-club-p-zadnii-fon-pikselnii-les-40.jpg") no-repeat center fixed;
+    background-size: cover;
+}
+
 .container {
-    width: 492px;
-    height: 492px;
-    border: 1px solid red;
-    margin: 40px auto;
+    width: 600px;
+    height: 570px;
+    margin: 15px auto;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background-color: rgba(245, 245, 245, 0.4);
+}
+
+.game-board {
+    width: 500px;
+    margin: 20px auto 10px;
+}
+
+.content {
+    width: 500px;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }

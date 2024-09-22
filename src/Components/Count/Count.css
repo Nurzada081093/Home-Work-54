@@ -1,0 +1,12 @@
+.tries {
+    font-size: 20px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.73);
+    width: 150px;
+    background-color: whitesmoke;
+    height: 30px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

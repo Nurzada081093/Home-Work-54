@@ -1,0 +1,14 @@
+.button button {
+    width: 120px;
+    height: 30px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: transparent;
+    color: rgba(0, 0, 0, 0.73);
+    font-weight: 600;
+}
+
+.button button:hover {
+    background-color: gray;
+    color: white;
+}

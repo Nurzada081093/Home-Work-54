@@ -3,7 +3,7 @@ import {useState} from 'react';
 import {Item} from './types';
 import Cells from './Components/Cells/Cells';
 import Count from './Components/Count/Count';
-import ResetButton from "./Components/ResetButton/ResetButton";
+import ResetButton from './Components/ResetButton/ResetButton';
 
 const App = () => {
 
@@ -27,6 +27,13 @@ const App = () => {
 
     const [items, setItems] = useState(createItems());
     const [counts, setCounts] = useState(0);
+    const [gameOver, setGameOver] = useState(false);
+
+    const resetGame = () => {
+        setCounts(0);
+        setItems(createItems());
+        setGameOver(false);
+    };
 
     const changeColor = (id: number) => {
 
@@ -42,23 +49,29 @@ const App = () => {
 
         setItems(copyItems);
 
-        let count: number = counts + 1;
+        const count: number = counts + 1;
         setCounts(count);
+
+        copyItems.find(item => {
+            if (item.clicked && item.hasItem) {
+                setTimeout(() => {
+                    setGameOver(true);
+                    alert('Поздравляю! Вы успешно нашли предмет. Если хотите продолжить игру, то нажмите на кнопку "Rest".');
+                }, 50);
+            }
+        });
     };
 
-    const resetGame = () => {
-        setCounts(0);
-        setItems(createItems);
-    };
 
     return (
-        <div>
-            <h1>Поиск предмета</h1>
-            <div className="container">
-                <Cells items={items} changeColor={changeColor}/>
+        <div className="container">
+            <div className="game-board">
+                <Cells items={items} changeColor={changeColor} gameOver={gameOver}/>
             </div>
-            <Count counter={counts}/>
-            <ResetButton resetGame={resetGame}/>
+            <div className="content">
+                <Count counter={counts}/>
+                <ResetButton resetGame={resetGame}/>
+            </div>
         </div>
     );
 };
