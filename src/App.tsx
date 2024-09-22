@@ -2,6 +2,8 @@ import './App.css';
 import {useState} from 'react';
 import {Item} from './types';
 import Cells from './Components/Cells/Cells';
+import Count from './Components/Count/Count';
+import ResetButton from "./Components/ResetButton/ResetButton";
 
 const App = () => {
 
@@ -24,6 +26,7 @@ const App = () => {
     };
 
     const [items, setItems] = useState(createItems());
+    const [counts, setCounts] = useState(0);
 
     const changeColor = (id: number) => {
 
@@ -32,12 +35,20 @@ const App = () => {
                 return {
                     ...item,
                     clicked: true,
-                }
+                };
             }
             return item;
         });
 
         setItems(copyItems);
+
+        let count: number = counts + 1;
+        setCounts(count);
+    };
+
+    const resetGame = () => {
+        setCounts(0);
+        setItems(createItems);
     };
 
     return (
@@ -46,6 +57,8 @@ const App = () => {
             <div className="container">
                 <Cells items={items} changeColor={changeColor}/>
             </div>
+            <Count counter={counts}/>
+            <ResetButton resetGame={resetGame}/>
         </div>
     );
 };
