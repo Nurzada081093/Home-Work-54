@@ -1,38 +1,37 @@
 import './App.css';
-
-interface Items {
-    hasItem: boolean;
-    clicked: boolean;
-}
+import {useState} from 'react';
+import {Item} from './taypes';
+import Cells from './Components/Cells/Cells';
 
 const App = () => {
 
     const createItems = () => {
-        const arrayItems: Items[] = [];
+        const arrayItems: Item[] = [];
 
         for (let i:number = 0; i < 36; i++) {
-           arrayItems.push({clicked: false, hasItem: false});
+           arrayItems.push({hasItem: false, clicked: false});
         }
 
         const randomItem:number = Math.floor(Math.random() * arrayItems.length);
-        console.log(randomItem);
 
         for (let i:number = 0; i < arrayItems.length; i++) {
             if (i === randomItem) {
                 arrayItems[i].hasItem = true;
-                console.log(i);
-                console.log(arrayItems[i]);
             }
         }
 
         return arrayItems;
     };
 
-    console.log(createItems());
+    const [items, setItems] = useState(createItems());
 
 
     return (
-        <div className="container">
+        <div>
+            <h1>Поиск предмета</h1>
+            <div className="container">
+                <Cells items={items}/>
+            </div>
         </div>
     );
 };
