@@ -1,21 +1,25 @@
 import React from 'react';
-import {Item} from '../../taypes';
+import {Item} from '../../types';
 import Cell from './Cell/Cell';
 
-
 interface IProps {
-    items: Item[]
+    items: Item[];
+    changeColor: (id: number) => void;
 }
 
-const Cells: React.FC<IProps> = ({items}) => {
+const Cells: React.FC<IProps> = ({items, changeColor}) => {
 
     return (
         <div style={{
             display: 'flex',
             flexWrap: 'wrap',
         }}>
-            {items.map((item, index) => (
-                <Cell key={index} hasItem={item.hasItem} clicked={item.clicked}/>
+            {items.map((item) => (
+                <Cell
+                    key={item.id}
+                    item={item}
+                    changeColor={() => changeColor(item.id)}
+                />
             ))}
         </div>
     );
